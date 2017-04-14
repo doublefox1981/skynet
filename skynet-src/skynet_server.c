@@ -564,6 +564,10 @@ cmd_stat(struct skynet_context * context, const char * param) {
 	} else if (strcmp(param, "cpu") == 0) {
 		double t = (double)context->cpu_cost / 1000000.0;	// microsec
 		sprintf(context->result, "%lf", t);
+	} else if (strcmp(param, "resetcpu") == 0) {
+		context->cpu_cost = 0;
+	} else if (strcmp(param, "resetmessage") == 0) {
+		context->message_count = 0;
 	} else if (strcmp(param, "time") == 0) {
 		if (context->profile) {
 			uint64_t ti = skynet_thread_time() - context->cpu_start;
